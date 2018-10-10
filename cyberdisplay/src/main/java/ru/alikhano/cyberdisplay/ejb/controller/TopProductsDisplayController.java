@@ -24,5 +24,9 @@ public class TopProductsDisplayController implements Serializable {
 	public List<DisplayProduct> getTopProducts() {
 		return topProductsEjbService.getProductsToDisplay();
 	}
+	
+	public void update() {
+		topProductsEjbService.update();
+	}
 
 }

@@ -17,14 +17,29 @@ public class ManageTopProductsService {
 	@Inject
 	GetTopProductsService getTopProductsService;
 	
+	private boolean needsUpdate = false;
 	
 	private static final Logger logger = LogManager.getLogger(ManageTopProductsService.class);
 	
 	public List<DisplayProduct> displayTopProducts() {
-		List<DisplayProduct> list = ProductDisplayMapper.convertProductForDisplay(getTopProductsService.getTopProducts());
-		return list;
+		return ProductDisplayMapper.convertProductForDisplay(getTopProductsService.getTopProducts());
+				
 	}
 	
+	public void getReadyforUpdate() {
+		changeUpdateState();
+	}
 	
+	public void changeUpdateState() {
+		needsUpdate = true;
+	}
+
+	public boolean isNeedsUpdate() {
+		return needsUpdate;
+	}
+
+	public void resetNeedsUpdate() {
+		needsUpdate = false;
+	}
 
 }

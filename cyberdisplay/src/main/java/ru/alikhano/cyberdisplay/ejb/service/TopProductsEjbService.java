@@ -1,8 +1,11 @@
 package ru.alikhano.cyberdisplay.ejb.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
@@ -14,6 +17,10 @@ public class TopProductsEjbService {
 	
 	@Inject 
 	ManageTopProductsService manageTopProductsService;
+	
+	@Inject
+	Listener listener;
+
 	
 	private List<DisplayProduct> productsToDisplay;
 
@@ -29,9 +36,24 @@ public class TopProductsEjbService {
 		productsToDisplay = manageTopProductsService.displayTopProducts();
 	}
 	
+	public void update() {
+		
+		if (manageTopProductsService.isNeedsUpdate()) {
+			loadDisplay();
+			manageTopProductsService.resetNeedsUpdate();
+		}
+		
+	}
+	
 	@PostConstruct
-	public void init() {
+	public void init() throws IOException, TimeoutException {
+		listener.start();
 		loadDisplay();
+	}
+	
+	@PreDestroy
+	private void stopListener() throws IOException, TimeoutException {
+		listener.close();
 	}
 
 

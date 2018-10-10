@@ -1,30 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
- <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://xmlns.jcp.org/jsf/html"
- xmlns:f="http://xmlns.jcp.org/jsf/core"
- xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
- 
- <h:head>
- </h:head>
- 
- <h:body>
- <table>
- <thead>
- <tr>
- <td>Model</td>
- <td>Price</td>
- </tr>
- </thead>
- <tbody>
- <ui:repeat id="topProducts" var="product" value="${topManagerBean.topProducts}">
- <tr>
- <td>${product.model}</td>
- <td>${product.price}</td>
- </tr>
- </ui:repeat>
- </tbody>
- </table>
- </h:body>
- 
- </html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:poll interval="5" listener="#{topManagerBean.update}"
+			update="table" />
+	</h:form>
+	
+	<h:dataTable id="table" var="product"
+				value="${topManagerBean.topProducts}"> 
+				<h:column>
+				<f:facet name="header">
+				<h:outputText value="Model"/>
+				</f:facet>
+				<h:outputText value ="#{product.model}"/>
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">
+				<h:outputText value="Price"/>
+				</f:facet>
+				<h:outputText value ="#{product.price}"/>
+				</h:column>
+	</h:dataTable>
+</h:body>
+
+</html>
