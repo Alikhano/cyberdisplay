@@ -1,0 +1,31 @@
+body {
+	background-image: url('../resources/images/home1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment:fixed;
+	font-family: 'Chakra Petch', sans-serif !important;
+	
+}
+
+
+.title, #catalogue {
+	background-color: rgba(0, 0, 0, 0.9);
+	color: white;
+}
+
+h3  {
+   	font-family: 'Chakra Petch', sans-serif !important;
+   	font-size: 40px !important;
+
+}
+
+th {
+	font-size: 30px !important;
+}
+
+.title {
+	padding: 3px;
+}
+
+
+

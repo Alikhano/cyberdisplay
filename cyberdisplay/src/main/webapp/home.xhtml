@@ -6,30 +6,66 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link href="//fonts.googleapis.com/css?family=Chakra+Petch"
+		rel="stylesheet" type="text/css" />
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
 <h:body>
-	<h:form>
-		<p:poll interval="5" listener="#{topManagerBean.update}"
-			update="table" />
-	</h:form>
-	
-	<h:dataTable id="table" var="product"
-				value="${topManagerBean.topProducts}"> 
-				<h:column>
-				<f:facet name="header">
-				<h:outputText value="Model"/>
-				</f:facet>
-				<h:outputText value ="#{product.model}"/>
-				</h:column>
-				
-				<h:column>
-				<f:facet name="header">
-				<h:outputText value="Price"/>
-				</f:facet>
-				<h:outputText value ="#{product.price}"/>
-				</h:column>
-	</h:dataTable>
+	<div class="bg">
+		<h:form>
+
+			<p:poll interval="5" listener="#{topManagerBean.update}"
+				update="table" />
+
+		</h:form>
+
+
+		<div class="container">
+
+			<div class="title">
+				<h3 class="text-center" style="font-size=20px">
+				Cyberlife: Top 10 Products
+				</h3>
+			</div>
+			<hr />
+
+
+			<h:panelGroup id="table">
+				<table class="table table-striped table-hover" id="catalogue">
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Model</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<ui:repeat var="product" value="${topManagerBean.topProducts}">
+						<tr>
+							<td><img
+								src="http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/static/images/#{product.model}.jpg"
+								alt="image" style="width: 150px; height: auto" /></td>
+							<td><a
+								href="http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/viewProduct/#{product.productId}">
+									<h:outputText value="#{product.model}" style="font-size: 30px" />
+							</a></td>
+							<td><h:outputText value="#{product.price}" style="font-size: 30px" /> USD</td>
+						</tr>
+					</ui:repeat>
+				</table>
+			</h:panelGroup>
+		</div>
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 </h:body>
 
 </html>

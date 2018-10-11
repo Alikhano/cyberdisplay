@@ -15,6 +15,7 @@ public class ProductDisplayMapper {
 		List<DisplayProduct> displayList = new ArrayList<>();
 		for (ProductJson productJson : topProducts) {
 			DisplayProduct displayProduct = new DisplayProduct();
+			displayProduct.setProductId(productJson.getProductId());
 			displayProduct.setModel(productJson.getModel());
 			displayProduct.setPrice(productJson.getPrice());
 			displayList.add(displayProduct);
