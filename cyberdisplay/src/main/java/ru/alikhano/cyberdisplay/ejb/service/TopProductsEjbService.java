@@ -9,7 +9,11 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ru.alikhano.cyberdisplay.model.DisplayProduct;
+import ru.alikhano.cyberdisplay.service.GetTopProductsService;
 import ru.alikhano.cyberdisplay.service.ManageTopProductsService;
 
 @Singleton
@@ -20,6 +24,8 @@ public class TopProductsEjbService {
 	
 	@Inject
 	Listener listener;
+	
+	private static final Logger logger = LogManager.getLogger(TopProductsEjbService.class);
 
 	
 	private List<DisplayProduct> productsToDisplay;
@@ -40,6 +46,7 @@ public class TopProductsEjbService {
 		
 		if (manageTopProductsService.isNeedsUpdate()) {
 			loadDisplay();
+			logger.info("TABLE WAS UPDATED!");
 			manageTopProductsService.resetNeedsUpdate();
 		}
 		

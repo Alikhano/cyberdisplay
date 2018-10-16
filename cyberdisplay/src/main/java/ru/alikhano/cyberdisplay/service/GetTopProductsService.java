@@ -23,7 +23,7 @@ import ru.alikhano.cyberdisplay.model.ProductJson;
 @Stateless
 public class GetTopProductsService {
 	
-	private static final String URI = "http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/topProducts";
+	private static final String URI = "http://localhost:8080/cyberlife/topProducts";
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private Client client = ClientBuilder.newClient();
 	

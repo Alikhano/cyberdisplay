@@ -7,6 +7,8 @@ import java.util.concurrent.TimeoutException;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.inject.Inject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,8 +35,9 @@ public class Listener {
 	@EJB
 	ManageTopProductsService manageTopProductsService;
 	
+	
 	public void start() throws IOException, TimeoutException {
-		System.out.println("!!!!START!!!!");
+		logger.info("listener has started");
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("localhost");
 		connection = connectionFactory.newConnection();
@@ -46,7 +49,6 @@ public class Listener {
 		public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws UnsupportedEncodingException {
 			String message = new String(body, "UTF-8");
 			logger.info("Message received from server: " + message);
-			System.out.println("Message received from server: " + message);
 			manageTopProductsService.getReadyforUpdate();
 			
 		}
