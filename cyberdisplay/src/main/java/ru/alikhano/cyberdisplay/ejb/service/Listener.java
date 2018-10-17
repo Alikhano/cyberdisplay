@@ -7,8 +7,6 @@ import java.util.concurrent.TimeoutException;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.inject.Inject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -13,7 +13,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import ru.alikhano.cyberdisplay.model.DisplayProduct;
-import ru.alikhano.cyberdisplay.service.GetTopProductsService;
 import ru.alikhano.cyberdisplay.service.ManageTopProductsService;
 
 @Singleton
