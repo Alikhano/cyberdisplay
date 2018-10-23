@@ -45,10 +45,10 @@
 					<ui:repeat var="product" value="${topManagerBean.topProducts}">
 						<tr>
 							<td><img
-								src="http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/static/images/#{product.model}.jpg"
+								src="http://localhost:8080/cyberlife/static/images/#{product.model}.jpg"
 								alt="image" style="width: 150px; height: auto" /></td>
 							<td><a
-								href="http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/viewProduct/#{product.productId}">
+								href="http://localhost:8080/cyberlife/viewProduct/#{product.productId}">
 									<h:outputText value="#{product.model}" style="font-size: 30px" />
 							</a></td>
 							<td><h:outputText value="#{product.price}"

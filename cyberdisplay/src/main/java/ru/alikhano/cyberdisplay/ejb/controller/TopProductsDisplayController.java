@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -17,6 +18,7 @@ public class TopProductsDisplayController implements Serializable {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	@EJB
 	TopProductsEjbService topProductsEjbService;
