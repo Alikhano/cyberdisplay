@@ -18,10 +18,8 @@
 <h:body>
 	<div class="bg">
 		<h:form>
-
-			<p:poll interval="5" listener="#{topManagerBean.update}"
+			<p:poll interval="5" autostart = "false" listener="#{topManagerBean.update}" 
 				update="table" />
-
 		</h:form>
 
 
@@ -45,7 +43,7 @@
 					<ui:repeat var="product" value="${topManagerBean.topProducts}">
 						<tr>
 							<td><img
-								src="http://localhost:8080/cyberlife/static/images/#{product.model}.jpg"
+								src="http://localhost:8080/cyberlife-0.0.1-SNAPSHOT/static/images/#{product.model}.jpg"
 								alt="image" style="width: 150px; height: auto" /></td>
 							<td><a
 								href="http://localhost:8080/cyberlife/viewProduct/#{product.productId}">

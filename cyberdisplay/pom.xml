@@ -8,6 +8,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cyberdisplay Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<!-- automatically run annotation processors within the incremental compilation -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jdk.version>1.8</jdk.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -97,6 +105,15 @@
 	<build>
 		<finalName>cyberdisplay</finalName>
 		<plugins>
+		<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.2.Final</version>
+				<configuration>
+						<port>9990</port>
+						<name>cyberldisplay.war</name>
+					</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.1</version>

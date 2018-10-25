@@ -41,13 +41,16 @@ public class TopProductsEjbService {
 		productsToDisplay = manageTopProductsService.displayTopProducts();
 	}
 	
-	public void update() {
+	public boolean update() {
 		
 		if (manageTopProductsService.isNeedsUpdate()) {
 			loadDisplay();
 			logger.info("TABLE WAS UPDATED!");
 			manageTopProductsService.resetNeedsUpdate();
+			return true;
 		}
+		
+		return false;
 		
 	}
 	
