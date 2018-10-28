@@ -28,11 +28,11 @@ public class TopProductsDisplayController implements Serializable {
 	TopProductsEjbService topProductsEjbService;
 	
 	public List<DisplayProduct> getTopProducts() {
+		logger.info("top products are displayed on start");
 		return topProductsEjbService.getProductsToDisplay();
 	}
 	
 	public boolean update() {
-		logger.info("display is updated");
 		return topProductsEjbService.update();
 		
 	}

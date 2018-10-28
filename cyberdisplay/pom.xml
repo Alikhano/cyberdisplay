@@ -105,7 +105,7 @@
 	<build>
 		<finalName>cyberdisplay</finalName>
 		<plugins>
-		<plugin>
+		<!-- <plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.2.2.Final</version>
@@ -113,7 +113,7 @@
 						<port>9990</port>
 						<name>cyberldisplay.war</name>
 					</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.1</version>

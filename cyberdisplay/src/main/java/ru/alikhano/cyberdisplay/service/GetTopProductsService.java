@@ -8,7 +8,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +29,6 @@ public class GetTopProductsService {
 	private static final Logger logger = LogManager.getLogger(GetTopProductsService.class);
 	
 	private String getTopProductsResponse() {
-		WebTarget target = client.target(URI);
 		return client.target(URI).request(MediaType.APPLICATION_JSON).get(String.class);
 	}
 	
