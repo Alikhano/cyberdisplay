@@ -18,7 +18,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.alikhano.cyberdisplay.model.ProductJson;
 
-
+/**
+ * @author Anastasia Likhanova
+ * @version 1.0
+ * @since 28.08.2018
+ *
+ */
 @Stateless
 public class GetTopProductsService {
 	
@@ -28,10 +33,18 @@ public class GetTopProductsService {
 	
 	private static final Logger logger = LogManager.getLogger(GetTopProductsService.class);
 	
+	/**
+	 * receives top 10 products from a web service as one String object
+	 * @return top 10 products in a String object
+	 */
 	private String getTopProductsResponse() {
 		return client.target(URI).request(MediaType.APPLICATION_JSON).get(String.class);
 	}
 	
+	/**
+	 * converts a string to the list of top 10 products
+	 * @return list of top 10 products as instances of ProductJson class
+	 */
 	public List<ProductJson> getTopProducts() {
 		String response = getTopProductsResponse();
 		List<ProductJson> productsJson = new ArrayList<>();

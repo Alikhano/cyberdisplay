@@ -21,6 +21,12 @@ import com.rabbitmq.client.Envelope;
 
 import ru.alikhano.cyberdisplay.service.ManageTopProductsService;
 
+/**
+ * @author Anastasia Likhanova
+ * @version 1.0
+ * @since 28.08.2018
+ *
+ */
 @Stateless
 public class Listener {
 	
@@ -34,6 +40,11 @@ public class Listener {
 	ManageTopProductsService manageTopProductsService;
 	
 	
+	/**
+	 * starts the RabbitMQ listener to receive notifications from server side 
+	 * @throws IOException
+	 * @throws TimeoutException
+	 */
 	public void start() throws IOException, TimeoutException {
 		logger.info("listener has started");
 		ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -56,6 +67,11 @@ public class Listener {
 		channel.basicConsume(QUEUENAME, true, consumer);
 	}
 	
+	/**
+	 * closes the listening channel on application shutdown
+	 * @throws IOException
+	 * @throws TimeoutException
+	 */
 	@PreDestroy
 	public void close() throws IOException, TimeoutException {
 		channel.close();

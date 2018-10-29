@@ -15,6 +15,12 @@ import org.apache.logging.log4j.Logger;
 import ru.alikhano.cyberdisplay.model.DisplayProduct;
 import ru.alikhano.cyberdisplay.service.ManageTopProductsService;
 
+/**
+ * @author Anastasia Likhanova
+ * @version 1.0
+ * @since 28.08.2018
+ *
+ */
 @Singleton
 public class TopProductsEjbService {
 	
@@ -29,6 +35,9 @@ public class TopProductsEjbService {
 	
 	private List<DisplayProduct> productsToDisplay;
 
+	/**
+	 * @return list of top 10 products that are ready to be displayed
+	 */
 	public List<DisplayProduct> getProductsToDisplay() {
 		return productsToDisplay;
 	}
@@ -37,10 +46,17 @@ public class TopProductsEjbService {
 		this.productsToDisplay = productsToDisplay;
 	}
 	
+	/**
+	 * fills in the list of DisplayProduct instances with top 10 products
+	 */
 	public void loadDisplay() {
 		productsToDisplay = manageTopProductsService.displayTopProducts();
 	}
 	
+	/**
+	 * reload the display if any of top 10 products have been modified
+	 * @return true/false depending on whether the actual update happened
+	 */
 	public boolean update() {
 		
 		if (manageTopProductsService.isNeedsUpdate()) {
@@ -54,12 +70,22 @@ public class TopProductsEjbService {
 		
 	}
 	
+	/**
+	 * starts the listener and loads the list of top 10 products on application start
+	 * @throws IOException
+	 * @throws TimeoutException
+	 */
 	@PostConstruct
 	public void init() throws IOException, TimeoutException {
 		listener.start();
 		loadDisplay();
 	}
 	
+	/**
+	 * stops the listener on application shutdown
+	 * @throws IOException
+	 * @throws TimeoutException
+	 */
 	@PreDestroy
 	private void stopListener() throws IOException, TimeoutException {
 		listener.close();
